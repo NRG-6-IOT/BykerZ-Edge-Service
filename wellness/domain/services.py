@@ -1,7 +1,7 @@
 from wellness.domain.entities import VehicleMetricRecord
 
 
-class VehicleMetricRecord:
+class VehicleMetricRecordService:
     def __init__(self):
         """Initialize the vehicle metric record service."""
         pass
