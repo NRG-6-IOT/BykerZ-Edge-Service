@@ -27,4 +27,4 @@ def about_edge_service():
     return "Bykerz IoT Edge Service - Bykerz Application"
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0' ,debug=True)
