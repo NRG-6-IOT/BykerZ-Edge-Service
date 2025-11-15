@@ -41,3 +41,24 @@ class AuthApplicationService:
         :return: A Device instance if found, None otherwise.
         """
         return self.device_repository.find_by_id_and_api_key(device_id, api_key)
+
+    def get_device_by_id(self, device_id: str)-> Optional[Device]:
+        """
+        Retrieve a device by its ID.
+        :param device_id: The ID of the device.
+        :return: A Device instance if found, None otherwise.
+        """
+        return self.device_repository.find_by_id(device_id)
+
+
+    def authenticate_device(self, device_id: str, jwt_token: str) -> bool:
+        """
+        Authenticate a device using its ID and JWT token.
+        :param device_id: The ID of the device.
+        :param jwt_token: The JWT token of the device.
+        :return:
+        """
+        device = self.device_repository.find_by_id(device_id)
+        if device and device.jwt_token == jwt_token:
+            return True
+        return False
