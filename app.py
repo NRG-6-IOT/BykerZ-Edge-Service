@@ -20,7 +20,7 @@ def setup():
         first_request = False
         init_db()
         auth_application_service = AuthApplicationService()
-        auth_application_service.create_default_device()
+        auth_application_service.get_or_create_test_device()
 
 @app.route('/')
 def about_edge_service():

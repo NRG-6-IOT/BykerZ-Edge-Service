@@ -11,9 +11,10 @@ def init_db()->None:
     Initialize the database and create tables if they do not exist.
 
     """
-    db.connect()
     from iam.infrastructure.models import Device
-    from health.infrastructure.models import HealthRecord
-    db.create_tables([Device, HealthRecord], safe=True)
+    from wellness.infrastructure.models import VehicleMetricRecord
+
+    db.connect()
+    db.create_tables([Device, VehicleMetricRecord], safe=True)
     db.close()
 
