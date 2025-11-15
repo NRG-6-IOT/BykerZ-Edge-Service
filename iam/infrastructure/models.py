@@ -1,4 +1,5 @@
 from peewee import Model, CharField, DateTimeField
+from datetime import datetime
 from shared.infrastructure.database import db
 
 class Device(Model):
@@ -11,8 +12,11 @@ class Device(Model):
         created_at (datetime): Timestamp when the device was created.
     """
     device_id = CharField(primary_key=True)
-    api_key = CharField()
-    created_at = DateTimeField()
+    jwt_token = CharField()
+    # api_key = CharField()
+
+
+    created_at = DateTimeField(default=datetime.now)
 
     class Meta:
         """Metadata for the Device model."""
