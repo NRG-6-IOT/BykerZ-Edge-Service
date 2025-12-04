@@ -9,7 +9,7 @@ class VehicleMetricRecordService:
     @staticmethod
     def create_record(device_id: str, vehicle_id: int, latitude: float, longitude: float,
                       CO2Ppm: float, NH3Ppm: float, BenzenePpm: float, temperatureCelsius: float,
-                      humidityPercentage: float, pressureHpa: float, impactDetected: bool) -> VehicleMetricRecord:
+                      pressureHpa: float, impactDetected: bool) -> VehicleMetricRecord:
         """Create a vehicle metric record.
 
         Args:
@@ -21,7 +21,6 @@ class VehicleMetricRecordService:
             NH3Ppm (float): NH3 concentration in parts per million.
             BenzenePpm (float): Benzene concentration in parts per million.
             temperatureCelsius (float): Temperature in Celsius.
-            humidityPercentage (float): Humidity percentage.
             pressureHpa (float): Atmospheric pressure in hPa.
             impactDetected (bool): Whether an impact was detected.
 
@@ -39,7 +38,6 @@ class VehicleMetricRecordService:
             NH3Ppm = float(NH3Ppm)
             BenzenePpm = float(BenzenePpm)
             temperatureCelsius = float(temperatureCelsius)
-            humidityPercentage = float(humidityPercentage)
             pressureHpa = float(pressureHpa)
             impactDetected = bool(impactDetected)
         except (ValueError, TypeError):
@@ -47,4 +45,4 @@ class VehicleMetricRecordService:
 
         return VehicleMetricRecord(device_id, vehicle_id, latitude,
                                    longitude, CO2Ppm, NH3Ppm, BenzenePpm, temperatureCelsius,
-                                   humidityPercentage, pressureHpa, impactDetected)
+                                   pressureHpa, impactDetected)

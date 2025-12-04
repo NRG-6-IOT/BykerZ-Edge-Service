@@ -11,13 +11,12 @@ class VehicleMetricRecord:
         NH3Ppm (float): NH3 concentration in parts per million.
         BenzenePpm (float): Benzene concentration in parts per million.
         temperatureCelsius (float): Temperature in Celsius.
-        humidityPercentage (float): Humidity percentage.
         pressureHpa (float): Atmospheric pressure in hPa.
         impactDetected (bool): Flag indicating if an impact was detected.
     """
     def __init__(self, device_id: str, vehicle_id: int, latitude: float,
                  longitude: float, CO2Ppm: float, NH3Ppm: float, BenzenePpm: float, temperatureCelsius: float,
-                 humidityPercentage: float, pressureHpa: float, impactDetected: bool, id: int = None):
+                 pressureHpa: float, impactDetected: bool, id: int = None):
         """Initialize a VehicleMetricRecord instance.
 
         Args:
@@ -29,7 +28,6 @@ class VehicleMetricRecord:
             NH3Ppm (float): NH3 concentration in parts per million.
             BenzenePpm (float): Benzene concentration in parts per million.
             temperatureCelsius (float): Temperature in Celsius.
-            humidityPercentage (float): Humidity percentage.
             pressureHpa (float): Atmospheric pressure in hPa.
             impactDetected (bool): Flag indicating if an impact was detected.
             id (int, optional): Unique identifier for the vehicle metric record. Defaults to None.
@@ -43,6 +41,5 @@ class VehicleMetricRecord:
         self.NH3Ppm = NH3Ppm
         self.BenzenePpm = BenzenePpm
         self.temperatureCelsius = temperatureCelsius
-        self.humidityPercentage = humidityPercentage
         self.pressureHpa = pressureHpa
         self.impactDetected = impactDetected

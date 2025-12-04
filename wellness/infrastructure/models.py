@@ -13,7 +13,6 @@ class VehicleMetricRecord(Model):
     NH3Ppm = FloatField()
     BenzenePpm = FloatField()
     temperatureCelsius = FloatField()
-    humidityPercentage = FloatField()
     pressureHpa = FloatField()
     impactDetected = BooleanField()
 

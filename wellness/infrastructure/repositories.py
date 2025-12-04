@@ -22,7 +22,6 @@ class VehicleMetricRepository:
             NH3Ppm=vehicle_metric_record.NH3Ppm,
             BenzenePpm=vehicle_metric_record.BenzenePpm,
             temperatureCelsius=vehicle_metric_record.temperatureCelsius,
-            humidityPercentage=vehicle_metric_record.humidityPercentage,
             pressureHpa=vehicle_metric_record.pressureHpa,
             impactDetected=vehicle_metric_record.impactDetected
         )
@@ -36,7 +35,6 @@ class VehicleMetricRepository:
             NH3Ppm=vehicle_metric_record.NH3Ppm,
             BenzenePpm=vehicle_metric_record.BenzenePpm,
             temperatureCelsius=vehicle_metric_record.temperatureCelsius,
-            humidityPercentage=vehicle_metric_record.humidityPercentage,
             pressureHpa=vehicle_metric_record.pressureHpa,
             impactDetected=vehicle_metric_record.impactDetected,
             id=record.id
