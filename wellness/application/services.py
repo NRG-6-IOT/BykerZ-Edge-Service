@@ -15,7 +15,7 @@ class VehicleMetricRecordApplicationService:
     #                                  api_key: str) -> VehicleMetricRecord:
     def create_vehicle_metric_record(self, device_id: str, vehicle_id: int, latitude: float, longitude: float,
                                      CO2Ppm: float, NH3Ppm: float, BenzenePpm: float, temperatureCelsius: float,
-                                     humidityPercentage: float, pressureHpa: float, impactDetected: bool) -> VehicleMetricRecord:
+                                     pressureHpa: float, impactDetected: bool) -> VehicleMetricRecord:
         """
         Create a vehicle metric record submitted by a device.
 
@@ -28,7 +28,6 @@ class VehicleMetricRecordApplicationService:
             NH3Ppm (float): Ammonia (NH3) concentration in ppm.
             BenzenePpm (float): Benzene concentration in ppm.
             temperatureCelsius (float): Temperature in degrees Celsius.
-            humidityPercentage (float): Relative humidity as a percentage (0-100).
             pressureHpa (float): Atmospheric pressure in hectopascals (hPa).
             impactDetected (bool): Whether an impact was detected (True/False).
             api_key (str): API key used to authenticate the device.
@@ -45,6 +44,6 @@ class VehicleMetricRecordApplicationService:
         record = self.vehicle_metric_service.create_record(
             device_id, vehicle_id, latitude, longitude,
             CO2Ppm, NH3Ppm, BenzenePpm, temperatureCelsius,
-            humidityPercentage, pressureHpa, impactDetected
+            pressureHpa, impactDetected
         )
         return self.vehicle_metric_repository.save(record)

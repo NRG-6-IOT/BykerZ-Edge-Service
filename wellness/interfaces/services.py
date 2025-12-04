@@ -25,7 +25,7 @@ def create_vehicle_metric_record():
         if not auth_header or not auth_header.startswith('Bearer '):
             return jsonify({'error': 'Token no proporcionado'}), 401
 
-        jwt_token = auth_header.split(' ')[1]
+        api_key = auth_header.split(' ')[1]
         data = request.json
 
         device_id = data["device_id"]
@@ -34,7 +34,7 @@ def create_vehicle_metric_record():
         from iam.application.services import AuthApplicationService
         auth_service = AuthApplicationService()
 
-        if not auth_service.authenticate_device(device_id, jwt_token):
+        if not auth_service.authenticate_device(device_id, api_key):
             return jsonify({'error': 'Autenticación fallida'}), 401
 
         # Extract data from request
@@ -45,23 +45,22 @@ def create_vehicle_metric_record():
         NH3Ppm = data["NH3Ppm"]
         BenzenePpm = data["BenzenePpm"]
         temperatureCelsius = data["temperatureCelsius"]
-        humidityPercentage = data["humidityPercentage"]
         pressureHpa = data["pressureHpa"]
         impactDetected = data["impactDetected"]
 
         # Create local vehicle metric record
         record = vehicle_metric_service.create_vehicle_metric_record(
             device_id, vehicle_id, latitude, longitude, CO2Ppm, NH3Ppm,
-            BenzenePpm, temperatureCelsius, humidityPercentage, pressureHpa,
+            BenzenePpm, temperatureCelsius, pressureHpa,
             impactDetected
         )
 
         # Assemble payload for external API
         import requests
 
-        api_url = "http://localhost:8080/api/v1/metrics"
+        api_url = "https://bykerz-backend.onrender.com/api/v1/metrics"
         headers = {
-            "Authorization": f"Bearer {jwt_token}",
+            "Authorization": f"Bearer {api_key}",
             "Content-Type": "application/json"
         }
 
@@ -73,7 +72,6 @@ def create_vehicle_metric_record():
             "NH3Ppm": NH3Ppm,
             "BenzenePpm": BenzenePpm,
             "temperatureCelsius": temperatureCelsius,
-            "humidityPercentage": humidityPercentage,
             "pressureHpa": pressureHpa,
             "impactDetected": impactDetected
         }
@@ -92,7 +90,6 @@ def create_vehicle_metric_record():
             "NH3Ppm": record.NH3Ppm,
             "BenzenePpm": record.BenzenePpm,
             "temperatureCelsius": record.temperatureCelsius,
-            "humidityPercentage": record.humidityPercentage,
             "pressureHpa": record.pressureHpa,
             "impactDetected": record.impactDetected,
             "external_api_status": external_response.status_code
