@@ -14,7 +14,10 @@ first_request = True
 
 @app.before_request
 def setup():
-
+    """
+    Initialize the database and create a test device on the first request.
+    :return: None
+    """
     global first_request
     if first_request:
         first_request = False
@@ -24,6 +27,10 @@ def setup():
 
 @app.route('/')
 def about_edge_service():
+    """
+        Show information about the edge service.
+        :return: A string containing information about the edge service.
+        """
     return "Bykerz IoT Edge Service - Bykerz Application"
 
 if __name__ == '__main__':
