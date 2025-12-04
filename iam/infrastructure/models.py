@@ -12,10 +12,7 @@ class Device(Model):
         created_at (datetime): Timestamp when the device was created.
     """
     device_id = CharField(primary_key=True)
-    jwt_token = CharField()
-    # api_key = CharField()
-
-
+    api_key = CharField()
     created_at = DateTimeField(default=datetime.now)
 
     class Meta:
