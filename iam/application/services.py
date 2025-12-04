@@ -51,14 +51,14 @@ class AuthApplicationService:
         return self.device_repository.find_by_id(device_id)
 
 
-    def authenticate_device(self, device_id: str, jwt_token: str) -> bool:
+    def authenticate_device(self, device_id: str, api_key: str) -> bool:
         """
         Authenticate a device using its ID and JWT token.
         :param device_id: The ID of the device.
-        :param jwt_token: The JWT token of the device.
+        :param api_key: The API token of the device.
         :return:
         """
         device = self.device_repository.find_by_id(device_id)
-        if device and device.jwt_token == jwt_token:
+        if device and device.api_key == api_key:
             return True
         return False
